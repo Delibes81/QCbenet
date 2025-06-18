@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 const Hero = ({ 
   title, 
@@ -20,6 +21,9 @@ const Hero = ({
 
     if (!hero || !titleElement) return
 
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger)
+
     // GSAP animations
     const tl = gsap.timeline({ delay: 1 })
     
@@ -29,7 +33,6 @@ const Hero = ({
     )
 
     // Add scroll-triggered animations
-    gsap.registerPlugin(ScrollTrigger)
     
     return () => {
       tl.kill()

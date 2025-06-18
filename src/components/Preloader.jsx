@@ -10,7 +10,11 @@ const Preloader = () => {
       setProgress(prev => {
         if (prev >= 100) {
           clearInterval(timer)
-          setTimeout(() => setIsLoading(false), 500)
+          setTimeout(() => {
+            setIsLoading(false)
+            // Remove hidden class from body when preloader finishes
+            document.body.classList.remove('hidden')
+          }, 500)
           return 100
         }
         return prev + Math.random() * 15
